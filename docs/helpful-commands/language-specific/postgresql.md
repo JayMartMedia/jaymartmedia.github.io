@@ -20,4 +20,4 @@ PostgreSQL is a free open source relational database.
 
 1. switch to OS user: `su - postgres`
 2. connect: `psql`
-3. `\password` OR (for other user) `ALTER ROLE postgres WITH LOGIN PASSWORD 'password';`
+3. `\password` OR (for other user named 'replication') `\password replication` OR `ALTER ROLE replication WITH LOGIN PASSWORD 'password';`
