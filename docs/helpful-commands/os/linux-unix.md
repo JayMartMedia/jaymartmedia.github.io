@@ -59,6 +59,14 @@ Resources:
 
 `lsof -i -P -n | grep LISTEN` Check open ports
 
+## File system
+
+`df` - see which partition is biggest
+
+`du -h --max-depth 1 {path to directory}` - check file/directory size for sub-directories of the specified directory (-h makes sizes display their unit, max-depth shows how deep the check goes)
+
+`sudo du -h --max-depth 1 {path to directory} | grep '[0-9\,]\+G' | sort -nr` - check file directory size, filter to only GB, sort descending 
+
 ## Command History Tricks
 
 ### View recent commands
