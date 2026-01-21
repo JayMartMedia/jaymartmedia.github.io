@@ -37,3 +37,9 @@ src: https://stackoverflow.com/a/9570992
 ### Convert video to gif
 
 Scale down 1080p video into 1/4: `ffmpeg -i "input-video.mkv" -s 960x540 output.gif`
+
+## Add audio over video
+`ffmpeg -i input-video.mp4 -i audio-overlay.mp3 -filter_complex "[0:a][1:a]amix=inputs=2:weights=1 .5[aout]" -map 0:v -map "[aout]" -c:v copy -shortest output-video-with-audio.mp4`
+
+- `weights=1 .5` uses 100% volume for the original video, 50% volume for the overlay
+
