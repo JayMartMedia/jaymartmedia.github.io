@@ -32,3 +32,10 @@ WHERE cardinality(pg_blocking_pids(pid)) > 0;
 
 SELECT pg_terminate_backend(1199812);
 ```
+
+```sql
+SELECT t.relname, l.locktype, page, virtualtransaction, pid, mode, granted
+FROM pg_locks l, pg_stat_all_tables t 
+WHERE l.relation = t.relid 
+ORDER BY relation asc;
+```
