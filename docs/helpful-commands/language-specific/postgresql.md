@@ -21,3 +21,14 @@ PostgreSQL is a free open source relational database.
 1. switch to OS user: `su - postgres`
 2. connect: `psql`
 3. `\password` OR (for other user named 'replication') `\password replication` OR `ALTER ROLE replication WITH LOGIN PASSWORD 'password';`
+
+## Investigate locking
+```sql
+SELECT * FROM pg_locks;
+
+SELECT pid, usename, pg_blocking_pids(pid) AS blocked_by, query AS blocked_query
+FROM pg_stat_activity
+WHERE cardinality(pg_blocking_pids(pid)) > 0;
+
+SELECT pg_terminate_backend(1199812);
+```
